@@ -7,3 +7,6 @@ I worked on this assignment while learning how data fetching works in React. I f
 - Handles loading and error state
 - Fetches data using fetch API
 - Displays product list using the hook
+
+### Netilify
+eloquent-pixie-6c3a39.netlify.app

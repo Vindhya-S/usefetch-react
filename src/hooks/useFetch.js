@@ -3,22 +3,29 @@ import { useState, useEffect } from "react";
 const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
+    if (!url) {
+      return;
+    }
+
+    // fetching data from api
+    console.log("Fetching data...");
+
     fetch(url)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((result) => {
         setData(result);
         setLoading(false);
       })
       .catch(() => {
-        setError("Failed to fetch data");
+        setErrorMsg("Something went wrong");
         setLoading(false);
       });
   }, [url]);
 
-  return { data, loading, error };
+  return { data, loading, errorMsg };
 };
 
 export default useFetch;
